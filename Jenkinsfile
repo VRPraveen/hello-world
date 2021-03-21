@@ -15,7 +15,14 @@ agent any
     stage('Build') {
       steps {
         sh 'mvn clean package'
-      }
-    }
+         }
+       }
+    stage ('Deploy-to-tomcat') {
+      steps {
+        sshagent (['tomcat']) {
+       sh 'scp -o strictHostKeyChecking=no target/*.war ubuntu@18.222.139.102:/home/ubuntu/var/lib/tomcat9/webapps/webapp.war
+          
+     }
+    
   }
 } 
