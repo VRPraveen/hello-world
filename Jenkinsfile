@@ -2,9 +2,9 @@ pipeline {
 agent any
   tools {
   maven 'MVN'
-        }
+     }
   stages {
-    stage ('initialize'){
+    stage ('initialize') {
       steps {
              sh '''
               echo "PATH = $(PATH)"
@@ -17,11 +17,13 @@ agent any
         sh 'mvn clean package'
          }
        }
+    
     stage ('Deploy-to-tomcat') {
       steps {
         sshagent (['tomcat']) {
        sh 'scp -o strictHostKeyChecking=no target/*.war ubuntu@18.188.24.16:/var/lib/tomcat9/webapps/webapp.war'
-          
+           
+            }
          }
      }
   } 
