@@ -2,7 +2,7 @@ pipeline {
 agent any
   tools {
   maven 'Maven'
-     }
+        }
   stages {
     stage ('initialize') {
       steps {
@@ -19,14 +19,15 @@ agent any
        }
     sshagent(['3.141.98.170']) {
     // some block
-}
-    stage ('Deploy-to-tomcat') {
+    }
+   stage ('Deploy-to-tomcat') {
       steps {
-     sshagent (['ubuntu']) {
+   sshagent (['ubuntu']) {
         sh 'scp  webapp/target/webapp.war ubuntu@3.141.98.170:/var/lib/tomcat9/webapps'
            
             }
          }
      }
   } 
+}
 }
