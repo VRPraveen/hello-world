@@ -21,7 +21,7 @@ agent any
   stage ('Deploy-to-tomcat') {
       steps {
       sshagent(['tomcat9']) 
-      sh 'scp  webapp/target/webapp.war ubuntu@3.141.98.170:/var/lib/tomcat9/webapps'     
+      sh 'scp webapp/target/webapp.war ubuntu@3.141.98.170:/var/lib/tomcat9/webapps'     
             }
          }
      }
