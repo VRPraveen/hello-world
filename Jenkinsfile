@@ -18,12 +18,9 @@ agent any
         sh 'mvn clean package'
          }
        }
-   sshagent(['3.141.98.170']) {
-    // some block
-    }
    stage ('Deploy-to-tomcat') {
       steps {
-   sshagent (['ubuntu']) {
+  sshagent(['tomcat9']) 
       sh 'scp  webapp/target/webapp.war ubuntu@3.141.98.170:/var/lib/tomcat9/webapps'     
             }
          }
