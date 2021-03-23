@@ -4,8 +4,8 @@ agent any
   maven 'Maven'
         }
   
-  stages {
-    stage ('initialize') {
+ stages {
+  stage ('initialize') {
       steps {
              sh '''
               echo "PATH = $(PATH)"
@@ -13,16 +13,17 @@ agent any
               '''
              }
       }
-    stage ('Build') {
+  stage ('Build') {
       steps {
         sh 'mvn clean package'
          }
        }
-   stage ('Deploy-to-tomcat') {
+  stage ('Deploy-to-tomcat') {
       steps {
-  sshagent(['tomcat9']) 
+      sshagent(['tomcat9']) 
       sh 'scp  webapp/target/webapp.war ubuntu@3.141.98.170:/var/lib/tomcat9/webapps'     
             }
          }
      }
   }
+}
