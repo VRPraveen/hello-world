@@ -21,7 +21,7 @@ agent any
     stage ('Deploy-to-tomcat') {
       steps {
         sshagent (['ubuntu']) {
-       sh 'scp -o strictHostKeyChecking=no target/*.war ubuntu@13.59.137.239:/var/lib/tomcat9/webapps/webapp.war'
+       sh 'scp -o strictHostKeyChecking=no target/*.war 127.0.0.1/8:9090/var/lib/tomcat9/webapps/webapp.war'
            
             }
          }
